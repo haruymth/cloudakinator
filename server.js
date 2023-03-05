@@ -1,7 +1,7 @@
 const scloudjs = require("scloudjs");
 const { Aki,regions } = require("aki-api");
 const fs = require("fs");
-const gs = require("./lib/string.js");
+const gs = require("./string.js");
 const short = require("shortid");
 
 const sends = (data)=>{
@@ -51,8 +51,4 @@ scloudjs.setdatas(process.env.username,process.env.password,"813786333",messages
   await scloudjs.handshake();
   console.log("Lanched");
 })();
-const http = require("http");
-http.createServer((req,res)=>{
-  res.end("Hello,world!");
-}).listen(3000);
 
