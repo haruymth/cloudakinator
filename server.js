@@ -37,7 +37,8 @@ const messages = async(data)=>{
       sends(gs.strtonum(chars,id+","+instances[id].question+","+instances[id].answers.join("|")));
       if(instances[id].progress >= 70 || instances[id].currentStep >= 78){
         await instances[id].win();
-        sends(gs.strtonum(chars,id+`,あなたが思い浮かべたのは...「${instances[id].answers[0].name}(${instances[id].answers[0].description})」,あっていたらコメントしてね！`));
+        Logger.log(id+","+instances[id].question+","+instances[id].answers.join("|"))
+        sends(gs.strtonum(chars,id+`,あなたが思い浮かべたのは...「${instances[id].answers[0].name}(${instances[id].answers[0].description.replace(/,/g,"/")})」,あっていたらコメントしてね！`));
       }
     }
     }catch(e){
