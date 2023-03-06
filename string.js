@@ -2,7 +2,11 @@ function stringToNumber(chars,string) {
     let _string = string.toLowerCase();
     let output = "";
     for (let i = 0; i < _string.length; i++) {
-        output += ((chars.indexOf(_string[i])??10066) + 1).toString();
+        if(chars.indexOf(_string[i])==-1){
+            output += (10066).toString();
+        }else{
+            output += (chars.indexOf(_string[i]) + 1).toString();
+        }
     }
     return output;
 }
