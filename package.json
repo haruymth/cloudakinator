@@ -1,5 +1,5 @@
 {
-  "name": "glitch-hello-node",
+  "name": "Cloud Akinator",
   "version": "0.1.0",
   "description": "A simple Node app built on fastify, instantly up and running. Built to be remixed on Glitch.com.",
   "main": "server.js",
@@ -15,14 +15,10 @@
     "shortid": "^2.2.16"
   },
   "engines": {
-    "node": "14.x"
-  },
-  "repository": {
-    "url": "https://glitch.com/edit/#!/glitch-hello-node"
+    "node": "18.x"
   },
   "license": "MIT",
   "keywords": [
-    "node",
-    "glitch"
+    "node"
   ]
 }
