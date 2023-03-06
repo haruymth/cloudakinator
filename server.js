@@ -2,6 +2,7 @@ const scloudjs = require("scloudjs");
 const { Aki,regions } = require("aki-api");
 const fs = require("fs");
 const gs = require("./string.js");
+const Logger = require("./logger.js");
 const short = require("shortid");
 
 const sends = (data)=>{
@@ -25,8 +26,8 @@ const messages = async(data)=>{
       const region = "jp"
       instances[id] = new Aki({region});
       await instances[id].start();
-      console.log(id+","+instances[id].question+","+instances[id].answers.join("|"))
-      console.log(gs.strtonum(chars,id+","+instances[id].question+","+instances[id].answers.join("|")))
+      Logger.log(id+","+instances[id].question+","+instances[id].answers.join("|"))
+      Logger.log(gs.strtonum(chars,id+","+instances[id].question+","+instances[id].answers.join("|")))
       sends(gs.strtonum(chars,id+","+instances[id].question+","+instances[id].answers.join("|")));
     }else{
       const input = gs.numtostr(chars,String(clouddatas["from_client"].value));
@@ -40,7 +41,7 @@ const messages = async(data)=>{
     }
     }catch(e){
       gs.strtonum(chars,"500");
-      console.warn(e);
+      Logger.warn(e);
     }
   }
 }
@@ -49,6 +50,6 @@ scloudjs.setdatas(process.env.username,process.env.password,"813786333",messages
   await scloudjs.login();
   await scloudjs.connect();
   await scloudjs.handshake();
-  console.log("Lanched");
+  Logger.log("Lanched");
 })();
 
