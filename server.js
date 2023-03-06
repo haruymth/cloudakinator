@@ -41,7 +41,7 @@ const messages = async(data)=>{
     }
     }catch(e){
       gs.strtonum(chars,"500");
-      Logger.warn(e);
+      Logger.log(e);
     }
   }
 }
