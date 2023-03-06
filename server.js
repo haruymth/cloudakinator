@@ -37,7 +37,7 @@ const messages = async(data)=>{
       sends(gs.strtonum(chars,id+","+instances[id].question+","+instances[id].answers.join("|")));
       if(instances[id].progress >= 70 || instances[id].currentStep >= 78){
         await instances[id].win();
-        Logger.log(id+","+instances[id].question+","+instances[id].answers.join("|"))
+        Logger.log(id+`,あなたが思い浮かべたのは...「${instances[id].answers[0].name}(${instances[id].answers[0].description.replace(/,/g,"/")})」,あっていたらコメントしてね！`))
         sends(gs.strtonum(chars,id+`,あなたが思い浮かべたのは...「${instances[id].answers[0].name}(${instances[id].answers[0].description.replace(/,/g,"/")})」,あっていたらコメントしてね！`));
       }
     }
