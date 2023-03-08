@@ -26,15 +26,13 @@ const messages = async(data)=>{
       const region = gs.numtostr(chars,clouddatas["from_client"].value).slice(3,6);
       instances[id] = new Aki({region});
       await instances[id].start();
-      console.log(id+","+instances[id].question+","+instances[id].answers.join("|"));
-      console.log(gs.strtonum(chars,id+","+instances[id].question+","+instances[id].answers.join("|")))
+      console.log(id+instances[id].question);
       sends(gs.strtonum(chars,id+","+instances[id].question+","+instances[id].answers.join("|")));
     }else{
       const input = gs.numtostr(chars,String(clouddatas["from_client"].value));
       const id = input.split(",")[0];
       await instances[id].step(Number(input.split(",")[1]));
       console.log(instances[id].answers[Number(input.split(",")[1])]);
-      console.log(id+","+instances[id].question+","+instances[id].answers.join("|"))
       sends(gs.strtonum(chars,id+","+instances[id].question+","+instances[id].answers.join("|")));
       if(instances[id].progress >= 70 || instances[id].currentStep >= 78){
         await instances[id].win();
@@ -48,7 +46,7 @@ const messages = async(data)=>{
     }
   }
 }
-scloudjs.setdatas(process.env.username,process.env.password,process.env.projectid,messages);
+scloudjs.setdatas(process.env.username,process.env.password,"814836445",messages);
 
 
 (async()=>{
