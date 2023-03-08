@@ -27,17 +27,17 @@ const messages = async(data)=>{
       instances[id] = new Aki({region});
       await instances[id].start();
       console.log(id+instances[id].question);
-      sends(gs.strtonum(chars,id+","+instances[id].question+","+instances[id].answers.join("|")));
+      sends(gs.strtonum(chars,id+","+gs.hz(instances[id].question)+","+instances[id].answers.join("|")));
     }else{
       const input = gs.numtostr(chars,String(clouddatas["from_client"].value));
       const id = input.split(",")[0];
       await instances[id].step(Number(input.split(",")[1]));
       console.log(instances[id].answers[Number(input.split(",")[1])]);
-      sends(gs.strtonum(chars,id+","+instances[id].question+","+instances[id].answers.join("|")));
+      sends(gs.strtonum(chars,id+","+gs.hz(instances[id].question)+","+instances[id].answers.join("|")));
       if(instances[id].progress >= 70 || instances[id].currentStep >= 78){
         await instances[id].win();
         
-        sends(gs.strtonum(chars,id+`,「${instances[id].answers[0].name}」_(${instances[id].answers[0].description.replace(/,/g,"/")})__あっていたらコメントしてね!_Comment if you agree!`));
+        sends(gs.strtonum(chars,id+`,「${gs.hz(instances[id].answers[0].name)}」_(${gs.hz(instances[id].answers[0].description.replace(/,/g,"/"))})__あっていたらコメントしてね!_Comment if you agree!`));
       }
     }
     }catch(e){
@@ -46,7 +46,7 @@ const messages = async(data)=>{
     }
   }
 }
-scloudjs.setdatas(process.env.username,process.env.password,"814836445",messages);
+scloudjs.setdatas(process.env.username,process.env.password,process.env.projectid,messages);
 
 
 (async()=>{
