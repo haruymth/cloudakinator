@@ -18,7 +18,13 @@ function numberToString(chars,number) {
     }
     return output;
 }
+function hankaku2Zenkaku(str) {
+    return str.replace(/[Ａ-Ｚａ-ｚ０-９]/g, function(s) {
+        return String.fromCharCode(s.charCodeAt(0) - 0xFEE0);
+    });
+}
 module.exports={
   "numtostr":numberToString,
-  "strtonum":stringToNumber
+  "strtonum":stringToNumber,
+  "hz":hankaku2Zenkaku
 }
