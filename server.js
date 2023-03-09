@@ -29,12 +29,12 @@ const messages = async(data)=>{
       console.log(id+instances[id].question);
       sends(gs.strtonum(chars,id+","+gs.hz(instances[id].currentStep+"."+instances[id].question)+","+instances[id].answers.join("|")));
     }else{
+      const input = gs.numtostr(chars,String(clouddatas["from_client"].value));
+      const id = input.split(",")[0];
       if(instances[id].progress >= 70 || instances[id].currentStep >= 78){
         await instances[id].win();
         sends(gs.strtonum(chars,id+`,「${gs.hz(instances[id].answers[0].name)}」_(${gs.hz(instances[id].answers[0].description.replace(/,/g,"/"))})__あっていたらコメントしてね!_Comment if you agree!`));
       }else{
-        const input = gs.numtostr(chars,String(clouddatas["from_client"].value));
-        const id = input.split(",")[0];
         await instances[id].step(Number(input.split(",")[1]));
         console.log(instances[id].answers[Number(input.split(",")[1])]);
         sends(gs.strtonum(chars,id+","+gs.hz(instances[id].currentStep+"."+instances[id].question)+","+instances[id].answers.join("|")));
