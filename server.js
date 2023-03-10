@@ -27,7 +27,7 @@ const messages = async(data)=>{
       instances[id] = new Aki({region});
       await instances[id].start();
       console.log(id+instances[id].question);
-      sends(gs.strtonum(chars,id+","+gs.hz(instances[id].currentStep+1+"."+instances[id].question)+","+instances[id].answers.join("|")));
+      sends(gs.strtonum(chars,id+","+gs.hz("("+instances[id].currentStep+1+") "+instances[id].question)+","+instances[id].answers.join("|")));
     }else{
       const input = gs.numtostr(chars,String(clouddatas["from_client"].value));
       const id = input.split(",")[0];
@@ -37,7 +37,7 @@ const messages = async(data)=>{
       }else{
         await instances[id].step(Number(input.split(",")[1]));
         console.log(instances[id].answers[Number(input.split(",")[1])]);
-        sends(gs.strtonum(chars,id+","+gs.hz(instances[id].currentStep+1+"."+instances[id].question)+","+instances[id].answers.join("|")));
+        sends(gs.strtonum(chars,id+","+gs.hz("("+instances[id].currentStep+1+") "+instances[id].question)+","+instances[id].answers.join("|")));
       }
     }
     }catch(e){
