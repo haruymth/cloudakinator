@@ -55,4 +55,3 @@ scloudjs.setdatas(process.env.username,process.env.password,process.env.projecti
   await scloudjs.handshake();
   console.log("Lanched");
 })();
-
