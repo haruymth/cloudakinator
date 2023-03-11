@@ -4,7 +4,7 @@ const fs = require("fs");
 const gs = require("./string.js");
 const console = require("./logger.js");
 const short = require("shortid");
-short.characters('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNPQRSTUVWXYZ-');
+short.characters('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNPQRSTUVWXYZ-*!');
 const sends = (data)=>{
   const str = String(data).match(/.{1,256}/g);
   for(let i =1; i<str.length+1;i++){
