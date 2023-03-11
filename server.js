@@ -17,12 +17,11 @@ let clouddatas = new Object();
 const instances = {};
 const messages = async(data)=>{
   const temp = scloudjs.parsedata(data,clouddatas);
-  clouddatas = temp.clouddatas;
+  const clouddatas = temp.clouddatas;
   const changedlists = temp.changedlists;
-  console.log(changedlists)
   if(changedlists.join().includes("from_client")){
     try{
-    if(gs.numtostr(chars,clouddatas["from_client"].value).slice(0,3)=="200"){
+    if(gs.numtostr(chars,clouddatas[changedlists[0]].value).slice(0,3)=="200"){
       const id = short.generate().toLowerCase();
       const region = gs.numtostr(chars,clouddatas["from_client"].value).slice(3,6);
       instances[id] = new Aki({region});
