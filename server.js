@@ -23,13 +23,13 @@ const messages = async(data)=>{
     try{
     if(gs.numtostr(chars,clouddatas[changedlists[0]].value).slice(0,3)=="200"){
       const id = short.generate().toLowerCase();
-      const region = gs.numtostr(chars,clouddatas[changedlists[0].value).slice(3,6);
+      const region = gs.numtostr(chars,clouddatas[changedlists[0]].value).slice(3,6);
       instances[id] = new Aki({region});
       await instances[id].start();
       console.log(id+instances[id].question);
       sends(gs.strtonum(chars,id+","+gs.hz("("+(instances[id].currentStep+1)+") "+instances[id].question)+","+instances[id].answers.join("|")));
     }else{
-      const input = gs.numtostr(chars,String(clouddatas[changedlists[0].value));
+      const input = gs.numtostr(chars,String(clouddatas[changedlists[0]].value));
       const id = input.split(",")[0];
       if(instances[id].progress >= 70 || instances[id].currentStep >= 78){
         await instances[id].win();
