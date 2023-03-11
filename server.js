@@ -17,7 +17,7 @@ let clouddatas = new Object();
 const instances = {};
 const messages = async(data)=>{
   const temp = scloudjs.parsedata(data,clouddatas);
-  const clouddatas = temp.clouddatas;
+  clouddatas = temp.clouddatas;
   const changedlists = temp.changedlists;
   if(changedlists.join().includes("from_client")){
     try{
