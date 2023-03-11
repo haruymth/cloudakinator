@@ -19,6 +19,7 @@ const messages = async(data)=>{
   const temp = scloudjs.parsedata(data,clouddatas);
   clouddatas = temp.clouddatas;
   const changedlists = temp.changedlists;
+  console.log(changedlists)
   if(changedlists.join().includes("from_client")){
     try{
     if(gs.numtostr(chars,clouddatas["from_client"].value).slice(0,3)=="200"){
